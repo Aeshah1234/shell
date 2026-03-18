@@ -32,23 +32,23 @@ mkdir data
 # 2. Move the ./rawdata directory to ./data/raw (eg. move it into ./data and rename it to raw)
 mv rawdata data/raw
 # 3. List the contents of the ./data/raw directory
-ls raw
+ls data/raw
 # 4. Create the directory ./data/processed, 
 #    then create the following sub-directories within it: server_logs, user_logs, and event_logs
-mkdir processed
-cd processed
-mkdir server_logs user_logs event_logs
+mkdir data/processed
+cd data/processed
+mkdir data/processed/server_logs data/processed/user_logs data/processed/event_logs
 # 5. Copy all server log files (files with "server" in the name AND a .log extension) from ./data/raw to ./data/processed/server_logs
-cp raw*server*.logs processed/server_logs 
+cp data/raw/*server*.logs data/processed/server_logs 
 # 6. Repeat the above step for user logs and event logs
-cp raw*user*.logs processed/user_logs 
-cp raw*event*.logs processed/event_logs 
+cp data/raw/*user*.logs data/raw/processed/user_logs 
+cp data/raw/*event*.logs data/processed/event_logs 
 # 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
-rm processed/user_logs/*ipadd* 
-rm raw/user_logs/*ipadd* 
+rm data/processed/user_logs/*ipaddr* 
+rm data/raw/user_logs/*ipaddr* 
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
 touch inventory.txt 
-ls -R processed > inventory.txt 
+ls -R processed > data/inventory.txt 
 
 ###########################################
 
